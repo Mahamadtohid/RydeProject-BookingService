@@ -1,0 +1,35 @@
+#spring.application.name=RydeBookingService
+#
+#server.port=9094
+#
+#
+#spring.flyway.url=jdbc:mysql://localhost:3306/Ryde_DB_Local
+#spring.flyway.password=sadik
+#spring.flyway.user=root
+#
+#
+#spring.jackson.serialization.FAIL_ON_EMPTY_BEANS=false
+#spring.main.allow-bean-definition-overriding=true
+#
+#jwt.expiry=3600
+#jwt.secret=sadiksadiksadiksadik
+#
+#cookie.expiry=3600
+
+spring:
+  application:
+    name: RydeBookingService
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/Ryde_DB_Local
+    username: root
+    password: ${mysql_password}
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+server:
+  port: 8090
+
