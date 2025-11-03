@@ -2,9 +2,11 @@ package com.example.RydeBookingService.controllers;
 
 
 import com.example.RydeBookingService.dtos.CreateBookingResponseDto;
+import com.example.RydeBookingService.repositories.PassengerRepository;
 import com.example.RydeBookingService.services.BookingServiceImpl;
 import com.example.RydeProject_EntityService.models.Booking;
 import com.example.RydeProject_EntityService.models.BookingStatus;
+import com.example.RydeProject_EntityService.models.Passenger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.RydeBookingService.dtos.CreateBookingDto;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/booking")
@@ -25,12 +29,6 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<CreateBookingResponseDto> createBooking(@RequestBody CreateBookingDto request){
-
-        Booking booking = Booking.builder()
-                .bookingStatus(BookingStatus.ASSIGNING_DRIVER)
-                .startLocation(request.getStartLocation())
-                .endLocation(request.getEndLocation())
-                .build();
 
 
         return new ResponseEntity<>(bookingService.createBooking(request) , HttpStatus.CREATED);
